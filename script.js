@@ -63,51 +63,51 @@
      ======================================================= */
   var REVIEWS = [
     {
-      name: 'Priya Menon',
-      initials: 'PM',
+      name: 'NITYANAND SINGH',
+      initials: 'NS',
       rating: 5,
-      text: 'Every dish tasted like it was made with real care. The Dal Maison Saffron is worth the trip alone — 18 hours of slow cooking you can actually taste. Ambience is elegant without being stiff.',
-      date: '2 weeks ago',
+      text: 'One of the asthetic retro cafe bistro resort in Chapra city Food is super testy Best Ingredients Best place to hangout in Chapra city Best price restaurant.',
+      date: '4 months ago',
       verified: true
     },
     {
-      name: 'Rahul Iyer',
-      initials: 'RI',
+      name: 'The Bihari Guys',
+      initials: 'TBG',
       rating: 5,
-      text: 'Took my parents for their anniversary. Staff remembered the occasion and brought out a small dessert with a candle — small touches that made the evening. Butter chicken was the best I have had in Chennai.',
-      date: '1 month ago',
+      text: ' Hey This is Vishal Sharma From The Bihari Guys YouTube Channel...Love to Explore New Places &Making Videos...Subscribe My Channel for Funny Videos & Celebrities Interviews...',
+      date: '4 month ago',
       verified: true
     },
     {
-      name: 'Ayesha Khan',
-      initials: 'AK',
+      name: 'Sunny Singh',
+      initials: 'SS',
       rating: 5,
-      text: 'Went for the Hyderabadi biryani and stayed for the dessert. Long grain rice cooked perfectly, mirchi ka salan had a real kick. Portions are generous. Great value for the quality.',
-      date: '1 month ago',
+      text: 'One of the best cafe near chapra good vibes and peaceful environment Went for the Hyderabadi biryani and stayed for the dessert. Long grain rice cooked perfectly, mirchi ka salan had a real kick. Portions are generous. Great value for the quality.',
+      date: '4 month ago',
       verified: true
     },
     {
-      name: 'Vikram Nair',
-      initials: 'VN',
+      name: 'Ajitesh Prakash',
+      initials: 'AP',
       rating: 4,
-      text: 'Excellent food and service overall. Only small note is parking can be tight during peak dinner hours — but the valet was quick. Would absolutely return.',
-      date: '2 months ago',
+      text: 'Loved this café experience! The cold coffee was perfectly chilled, rich, creamy, and super refreshing. The ambience was warm, cozy, and beautifully designed—such a relaxing place to sit and enjoy. Great vibe,friendly staff, and perfect spot to unwind. Highly recommended! ☕✨.',
+      date: '4 months ago',
       verified: true
     },
     {
-      name: 'Sneha Reddy',
-      initials: 'SR',
+      name: 'Himanshu Ranjan (Anshu)',
+      initials: 'HR',
       rating: 5,
-      text: 'Came here for a work dinner and it was perfect. Quiet enough to talk, food came out hot and on time, and the staff kept the water glasses full without hovering. The truffle naan is addictive.',
-      date: '2 months ago',
+      text: 'Amazing ambience with elegant architecture and a peaceful atmosphere. Beautiful place for coffee and photos. Clean, cozy, and definitely worth visiting..',
+      date: '4 months ago',
       verified: true
     },
     {
-      name: 'Karthik Subramanian',
-      initials: 'KS',
+      name: 'Biki Kumar Singh',
+      initials: 'BKS',
       rating: 5,
-      text: 'Best South Indian fine dining in the city. The Malabar fish curry has real depth and the rose lassi is a must. Twenty-six years of doing this shows in every plate.',
-      date: '3 months ago',
+      text: 'Super and delicious food item. My favourite dish is Maggie masala and capachino. Service and behaviour is too good. 👍 ',
+      date: '6 months ago',
       verified: true
     }
   ];

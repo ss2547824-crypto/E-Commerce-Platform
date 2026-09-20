@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="The Mango Tree Cafe — fine dining restaurant. Browse the menu, order online, pay securely." />
-<title>The Mango Tree Cafe — Fine Dining &amp; Online Ordering</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0d0c0a" />
+<meta name="description" content="Maison Saffron — fine dining restaurant. Browse the menu, order online, pay securely." />
+<title>Maison Saffron — Fine Dining &amp; Online Ordering</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,33 +22,66 @@
     <a class="brand" href="#top">
       <span class="brand-mark">MS</span>
       <span class="brand-text">
-        <strong>The Mango Tree Cafe</strong>
+        <strong>Maison Saffron</strong>
         <small>Fine Dining &amp; Kitchen</small>
       </span>
     </a>
 
-    <nav class="nav" aria-label="Primary">
+    <nav class="nav nav-desktop" aria-label="Primary">
       <a href="#menu">Menu</a>
       <a href="#gallery">Gallery</a>
-      <a href="#feedback">Feedback</a>
+      <a href="#reviews">Reviews</a>
       <a href="#location">Location</a>
+      <a href="#wifi">Wi-Fi</a>
       <a href="#owner">Owner</a>
       <a href="#social">Social</a>
     </nav>
 
-    <button type="button" class="cart-btn" id="cartBtn" aria-label="Open cart">
-      Cart
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
+    <div class="header-actions">
+      <button type="button" class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <span class="cart-label">Cart</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+
+      <button type="button" class="menu-toggle" id="menuToggle"
+              aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" hidden></div>
+
+<aside class="mobile-nav" id="mobileNav" hidden aria-label="Mobile navigation">
+  <div class="mobile-nav-head">
+    <span class="brand-mark">MS</span>
+    <button type="button" class="icon-btn" id="closeMobileNav" aria-label="Close menu">✕</button>
+  </div>
+
+  <nav class="mobile-nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#location">Location</a>
+    <a href="#wifi">Wi-Fi</a>
+    <a href="#owner">Owner</a>
+    <a href="#social">Social</a>
+  </nav>
+
+  <div class="mobile-nav-foot">
+    <a href="tel:+914445678900">+91 44 4567 8900</a>
+    <p>Open daily · 12:00 – 23:00</p>
+  </div>
+</aside>
 
 <main>
 
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-inner">
-      <p class="eyebrow">Established 2025 · Chhapra </p>
+      <p class="eyebrow">Established 1998 · Chennai</p>
       <h1>Slow-cooked tradition,<br />served with quiet luxury.</h1>
       <p class="lead">
         A modern Indian kitchen where heirloom recipes meet precise technique.
@@ -56,7 +90,7 @@
 
       <div class="hero-actions">
         <a href="#menu" class="btn btn-gold">Browse the Menu</a>
-        <a href="#menu" class="btn btn-ghost" id="heroOrderBtn">Order Online</a>
+        <a href="#menu" class="btn btn-ghost">Order Online</a>
       </div>
 
       <ul class="hero-facts">
@@ -74,18 +108,19 @@
         <p class="eyebrow">Our Kitchen</p>
         <h2>The Menu</h2>
         <p class="section-sub">
-       Excellent Beans to Cup Coffee, Light Bites, Shakes, Desserts.
+          Every plate is prepared to order. Add dishes to your cart and check out securely.
         </p>
       </header>
 
-      <div class="filters" id="filters" role="tablist" aria-label="Menu categories"></div>
+      <div class="filters-scroll">
+        <div class="filters" id="filters" role="tablist" aria-label="Menu categories"></div>
+      </div>
+
       <div class="menu-grid" id="menuGrid"></div>
     </div>
   </section>
 
-  <!-- ============================================================
-       GALLERY
-  ============================================================ -->
+  <!-- GALLERY -->
   <section class="section section-alt" id="gallery">
     <div class="wrap">
       <header class="section-head center">
@@ -100,59 +135,79 @@
 
       <p class="gallery-hint">
         <b>To add your photos:</b> open <code>script.js</code> and edit the <code>GALLERY</code> array —
-        paste the image URL into the <code>src</code> field of any slot. Leave it empty to keep the
-        placeholder.
+        paste the image URL into the <code>src</code> field of any slot.
       </p>
     </div>
   </section>
 
-  <!-- FEEDBACK -->
-  <section class="section" id="feedback">
+  <!-- ============================================================
+       GOOGLE REVIEWS
+  ============================================================ -->
+  <section class="section" id="reviews">
     <div class="wrap">
       <header class="section-head center">
-        <p class="eyebrow">Guest Book</p>
-        <h2>Share Your Experience</h2>
+        <p class="eyebrow">Guest Voices</p>
+        <h2>Google Reviews</h2>
         <p class="section-sub">
-          Your feedback goes straight to our kitchen and service team.
+          Rated by real diners on Google. Thank you for making us one of Chennai's most-loved tables.
         </p>
       </header>
 
-      <form class="feedback-form card" id="feedbackForm" novalidate>
-        <div class="form-row">
-          <div class="field">
-            <label for="fbName">Your Name</label>
-            <input class="input" type="text" id="fbName" placeholder="Your name" autocomplete="name" />
-            <span class="err" data-err="fbName"></span>
+      <!-- Rating summary -->
+      <div class="reviews-summary">
+        <div class="reviews-score">
+          <span class="reviews-google-badge" aria-hidden="true">
+            <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+          </span>
+          <strong class="reviews-big">4.8</strong>
+          <div class="reviews-stars-lg" aria-label="4.8 out of 5 stars">
+            <span class="s-on">★</span><span class="s-on">★</span><span class="s-on">★</span><span class="s-on">★</span><span class="s-on">★</span>
           </div>
-          <div class="field">
-            <label for="fbEmail">Email</label>
-            <input class="input" type="email" id="fbEmail" placeholder="you@example.com" autocomplete="email" />
-            <span class="err" data-err="fbEmail"></span>
-          </div>
+          <span class="reviews-count">Based on 2,417 Google reviews</span>
+          <a class="btn btn-ghost btn-small reviews-write" id="writeReviewBtn"
+             href="https://www.google.com/maps/search/?api=1&query=Maison+Saffron+Chennai"
+             target="_blank" rel="noopener">Write a Review</a>
         </div>
 
-        <div class="field">
-          <label id="ratingLabel">Your Rating</label>
-          <div class="stars" id="stars" role="radiogroup" aria-labelledby="ratingLabel">
-            <button type="button" class="star" data-value="1" role="radio" aria-checked="false" aria-label="1 star">★</button>
-            <button type="button" class="star" data-value="2" role="radio" aria-checked="false" aria-label="2 stars">★</button>
-            <button type="button" class="star" data-value="3" role="radio" aria-checked="false" aria-label="3 stars">★</button>
-            <button type="button" class="star" data-value="4" role="radio" aria-checked="false" aria-label="4 stars">★</button>
-            <button type="button" class="star" data-value="5" role="radio" aria-checked="false" aria-label="5 stars">★</button>
+        <div class="reviews-bars">
+          <div class="bar-row">
+            <span class="bar-label">5★</span>
+            <span class="bar"><span class="bar-fill" style="width:84%"></span></span>
+            <span class="bar-pct">84%</span>
           </div>
-          <span class="err" data-err="rating"></span>
+          <div class="bar-row">
+            <span class="bar-label">4★</span>
+            <span class="bar"><span class="bar-fill" style="width:11%"></span></span>
+            <span class="bar-pct">11%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">3★</span>
+            <span class="bar"><span class="bar-fill" style="width:3%"></span></span>
+            <span class="bar-pct">3%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">2★</span>
+            <span class="bar"><span class="bar-fill" style="width:1%"></span></span>
+            <span class="bar-pct">1%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">1★</span>
+            <span class="bar"><span class="bar-fill" style="width:1%"></span></span>
+            <span class="bar-pct">1%</span>
+          </div>
         </div>
+      </div>
 
-        <div class="field">
-          <label for="fbMessage">Comments</label>
-          <textarea class="input" id="fbMessage" rows="5" placeholder="Tell us about the food, service and ambience…"></textarea>
-          <span class="err" data-err="fbMessage"></span>
-        </div>
+      <!-- Individual reviews -->
+      <div class="reviews-grid" id="reviewsGrid"></div>
 
-        <button type="submit" class="btn btn-gold">Submit Feedback</button>
-
-        <div class="alert alert-ok" id="feedbackStatus" hidden></div>
-      </form>
+      <div class="reviews-cta">
+        <a class="btn btn-gold"
+           href="https://www.google.com/maps/search/?api=1&query=Maison+Saffron+Chennai"
+           target="_blank" rel="noopener">
+          See All 2,417 Reviews on Google
+        </a>
+      </div>
     </div>
   </section>
 
@@ -166,17 +221,17 @@
 
       <div class="location-grid">
         <div class="card info-card">
-          <h3></h3>
+          <h3>Maison Saffron</h3>
           <p class="muted">
-            Near Chanchaura, Tenua, Ram Kolwa,<br />
-            Chhapra, Saran, Bihar 841414 <br />
+            12 Cathedral Road<br />
+            Chennai, Tamil Nadu 600086<br />
             India
           </p>
 
           <ul class="info-list">
             <li><span>Lunch</span><strong>12:00 – 15:30</strong></li>
             <li><span>Dinner</span><strong>19:00 – 23:00</strong></li>
-            <li><span>Phone</span><strong>+91</strong></li>
+            <li><span>Phone</span><strong>+91 44 4567 8900</strong></li>
             <li><span>Email</span><strong>reservations@maisonsaffron.in</strong></li>
             <li><span>Parking</span><strong>Valet available</strong></li>
             <li><span>Delivery Radius</span><strong>7 km</strong></li>
@@ -198,8 +253,85 @@
     </div>
   </section>
 
+  <!-- ============================================================
+       WI-FI
+  ============================================================ -->
+  <section class="section" id="wifi">
+    <div class="wrap">
+      <header class="section-head center">
+        <p class="eyebrow">For Our Guests</p>
+        <h2>Free Guest Wi-Fi</h2>
+        <p class="section-sub">
+          Complimentary high-speed internet across the dining hall, terrace and private rooms.
+          Ask our team if you need help connecting.
+        </p>
+      </header>
+
+      <div class="wifi-grid">
+
+        <!-- Network card -->
+        <div class="wifi-card wifi-card-primary">
+          <div class="wifi-card-head">
+            <span class="wifi-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12.5a11 11 0 0 1 14 0"/>
+                <path d="M2 9.5a15.5 15.5 0 0 1 20 0"/>
+                <path d="M8.5 15.8a6.5 6.5 0 0 1 7 0"/>
+                <circle cx="12" cy="19.4" r="1"/>
+              </svg>
+            </span>
+            <span class="wifi-card-eyebrow">Guest Network</span>
+          </div>
+
+          <ul class="wifi-fields">
+            <li>
+              <span class="wifi-label">Network Name (SSID)</span>
+              <strong class="wifi-value" id="wifiSsid">MaisonSaffron_Guest</strong>
+            </li>
+            <li>
+              <span class="wifi-label">Password</span>
+              <strong class="wifi-value wifi-value-password" id="wifiPass">Saffron@1998</strong>
+            </li>
+          </ul>
+
+          <button type="button" class="btn btn-gold btn-block btn-small" id="copyWifiBtn">
+            Copy Wi-Fi Password
+          </button>
+        </div>
+
+        <!-- Details card -->
+        <div class="wifi-card">
+          <div class="wifi-card-head">
+            <span class="wifi-icon wifi-icon-subtle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 8h.01M11 12h1v4h1"/>
+              </svg>
+            </span>
+            <span class="wifi-card-eyebrow">Connection Details</span>
+          </div>
+
+          <ul class="wifi-detail-list">
+            <li><span>Band</span><strong>Dual-band (2.4 / 5 GHz)</strong></li>
+            <li><span>Speed</span><strong>Up to 300 Mbps</strong></li>
+            <li><span>Coverage</span><strong>Full restaurant &amp; terrace</strong></li>
+            <li><span>Session</span><strong>Unlimited · No sign-up</strong></li>
+            <li><span>Support</span><strong>Ask any team member</strong></li>
+          </ul>
+
+          <p class="wifi-note">
+            By connecting you agree to use the network responsibly. We don't log personal browsing data.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- OWNER -->
-  <section class="section" id="owner">
+  <section class="section section-alt" id="owner">
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow">The House</p>
@@ -238,7 +370,7 @@
   </section>
 
   <!-- SOCIAL -->
-  <section class="section section-alt" id="social">
+  <section class="section" id="social">
     <div class="wrap">
       <header class="section-head center">
         <p class="eyebrow">Follow Along</p>
@@ -277,8 +409,9 @@
       <h4>Explore</h4>
       <a href="#menu">Menu</a>
       <a href="#gallery">Gallery</a>
-      <a href="#feedback">Feedback</a>
+      <a href="#reviews">Reviews</a>
       <a href="#location">Location</a>
+      <a href="#wifi">Wi-Fi</a>
       <a href="#owner">Owner</a>
       <a href="#social">Social</a>
     </div>
@@ -487,9 +620,7 @@
   </div>
 </div>
 
-<!-- ============================================================
-     LIGHTBOX (for gallery)
-============================================================ -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" hidden>
   <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close image">✕</button>
   <img class="lightbox-img" id="lightboxImg" alt="" />

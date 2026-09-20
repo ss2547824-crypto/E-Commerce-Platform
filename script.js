@@ -1,7 +1,7 @@
 /* =========================================================
    MAISON SAFFRON — script.js
-   Restaurant e-commerce: menu, gallery, cart, checkout,
-   payment, feedback, social share
+   Restaurant e-commerce: menu, gallery, google reviews, wifi,
+   cart, checkout, payment, social share, mobile navigation
    ========================================================= */
 
 (function () {
@@ -39,40 +39,81 @@
     { id: 'bv3', cat: 'Beverages', name: 'Kokum Cooler', desc: 'Coastal kokum, black salt, mint, soda.', price: 220, veg: true }
   ];
 
-  var CATEGORIES = ['All'].concat(MENU.map(function (d) { return d.cat; }).filter(function (c, i, a) { return a.indexOf(c) === i; }));
+  var CATEGORIES = ['All'].concat(
+    MENU.map(function (d) { return d.cat; })
+        .filter(function (c, i, a) { return a.indexOf(c) === i; })
+  );
 
   /* =======================================================
      GALLERY DATA
-     -------------------------------------------------------
-     HOW TO ADD YOUR PHOTOS:
-       1. Put your image files in an "images" folder next to
-          index.html, OR use any public URL.
-       2. Set the "src" field to that path/URL. Leave it as ""
-          to keep the placeholder tile.
-       3. "caption" is the label shown on the image.
-       4. Set "featured: true" on ONE tile to make it span
-          2 columns × 2 rows (magazine-style hero tile).
-
-     Recommended image size: 1200 × 1200 px (square), JPG, < 300 KB
      ======================================================= */
   var GALLERY = [
-    {
-      src: '',                       // e.g. 'images/dining-hall.jpg'
-      caption: 'The Dining Hall',
-      hint: 'Featured · 1200×1200',
-      featured: true
-    },
-    { src: '', caption: 'Signature Dal',    hint: '1200×1200' },
-    { src: '', caption: 'Tandoor Kitchen',  hint: '1200×1200' },
-    { src: '', caption: 'Private Dining',   hint: '1200×1200' },
-    { src: '', caption: 'Dessert Counter',  hint: '1200×1200' },
-    { src: '', caption: 'The Terrace',      hint: '1200×1200' },
-    { src: '', caption: 'Spice Room',       hint: '1200×1200' },
-    { src: '', caption: 'Evening Service',  hint: '1200×1200' }
+    { src: '', caption: 'The Dining Hall', hint: 'Featured',  featured: true },
+    { src: '', caption: 'Signature Dal',   hint: '1200×1200' },
+    { src: '', caption: 'Tandoor Kitchen', hint: '1200×1200' },
+    { src: '', caption: 'Private Dining',  hint: '1200×1200' },
+    { src: '', caption: 'Dessert Counter', hint: '1200×1200' },
+    { src: '', caption: 'The Terrace',     hint: '1200×1200' },
+    { src: '', caption: 'Spice Room',      hint: '1200×1200' },
+    { src: '', caption: 'Evening Service', hint: '1200×1200' }
   ];
 
   /* =======================================================
-     SOCIAL MEDIA DATA
+     GOOGLE REVIEWS DATA
+     ======================================================= */
+  var REVIEWS = [
+    {
+      name: 'Priya Menon',
+      initials: 'PM',
+      rating: 5,
+      text: 'Every dish tasted like it was made with real care. The Dal Maison Saffron is worth the trip alone — 18 hours of slow cooking you can actually taste. Ambience is elegant without being stiff.',
+      date: '2 weeks ago',
+      verified: true
+    },
+    {
+      name: 'Rahul Iyer',
+      initials: 'RI',
+      rating: 5,
+      text: 'Took my parents for their anniversary. Staff remembered the occasion and brought out a small dessert with a candle — small touches that made the evening. Butter chicken was the best I have had in Chennai.',
+      date: '1 month ago',
+      verified: true
+    },
+    {
+      name: 'Ayesha Khan',
+      initials: 'AK',
+      rating: 5,
+      text: 'Went for the Hyderabadi biryani and stayed for the dessert. Long grain rice cooked perfectly, mirchi ka salan had a real kick. Portions are generous. Great value for the quality.',
+      date: '1 month ago',
+      verified: true
+    },
+    {
+      name: 'Vikram Nair',
+      initials: 'VN',
+      rating: 4,
+      text: 'Excellent food and service overall. Only small note is parking can be tight during peak dinner hours — but the valet was quick. Would absolutely return.',
+      date: '2 months ago',
+      verified: true
+    },
+    {
+      name: 'Sneha Reddy',
+      initials: 'SR',
+      rating: 5,
+      text: 'Came here for a work dinner and it was perfect. Quiet enough to talk, food came out hot and on time, and the staff kept the water glasses full without hovering. The truffle naan is addictive.',
+      date: '2 months ago',
+      verified: true
+    },
+    {
+      name: 'Karthik Subramanian',
+      initials: 'KS',
+      rating: 5,
+      text: 'Best South Indian fine dining in the city. The Malabar fish curry has real depth and the rose lassi is a must. Twenty-six years of doing this shows in every plate.',
+      date: '3 months ago',
+      verified: true
+    }
+  ];
+
+  /* =======================================================
+     SOCIAL MEDIA ICONS + DATA
      ======================================================= */
   var SOCIAL_ICONS = {
     instagram:
@@ -105,11 +146,11 @@
   };
 
   var SOCIAL = [
-    { key: 'instagram', name: 'Instagram',   handle: '@maisonsaffron',  count: '48.2K', url: 'https://instagram.com/maisonsaffron' },
-    { key: 'facebook',  name: 'Facebook',    handle: '/maisonsaffron',  count: '32.7K', url: 'https://facebook.com/maisonsaffron' },
-    { key: 'x',         name: 'X (Twitter)', handle: '@maisonsaffron',  count: '12.4K', url: 'https://x.com/maisonsaffron' },
-    { key: 'youtube',   name: 'YouTube',     handle: '/maisonsaffron',  count: '8.9K',  url: 'https://youtube.com/@maisonsaffron' },
-    { key: 'whatsapp',  name: 'WhatsApp',    handle: 'Chat with us',    count: '24/7',  url: 'https://wa.me/914445678900' }
+    { key: 'instagram', name: 'Instagram',   handle: '@maisonsaffron', count: '48.2K', url: 'https://instagram.com/maisonsaffron' },
+    { key: 'facebook',  name: 'Facebook',    handle: '/maisonsaffron', count: '32.7K', url: 'https://facebook.com/maisonsaffron' },
+    { key: 'x',         name: 'X (Twitter)', handle: '@maisonsaffron', count: '12.4K', url: 'https://x.com/maisonsaffron' },
+    { key: 'youtube',   name: 'YouTube',     handle: '/maisonsaffron', count: '8.9K',  url: 'https://youtube.com/@maisonsaffron' },
+    { key: 'whatsapp',  name: 'WhatsApp',    handle: 'Chat with us',   count: '24/7',  url: 'https://wa.me/914445678900' }
   ];
 
   /* =======================================================
@@ -120,13 +161,13 @@
   var TAX_RATE = 0.05;
   var COD_HANDLING = 20;
   var COD_HANDLING_BELOW = 500;
+  var MOBILE_NAV_BREAKPOINT = 900;
 
   /* =======================================================
      STATE
      ======================================================= */
   var cart = [];
   var activeCategory = 'All';
-  var rating = 0;
   var isPaying = false;
   var toastTimer = null;
   var scrollLockCount = 0;
@@ -166,6 +207,7 @@
     scrollLockCount++;
     document.body.style.overflow = 'hidden';
   }
+
   function unlockScroll() {
     scrollLockCount = Math.max(0, scrollLockCount - 1);
     if (scrollLockCount === 0) document.body.style.overflow = '';
@@ -181,6 +223,32 @@
     el.hidden = false;
     if (toastTimer) clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { el.hidden = true; }, 2600);
+  }
+
+  /* =======================================================
+     MOBILE NAVIGATION
+     ======================================================= */
+  function openMobileNav() {
+    var nav = $('mobileNav');
+    var ov  = $('mobileNavOverlay');
+    var btn = $('menuToggle');
+    if (!nav || !ov || !btn) return;
+    nav.hidden = false;
+    ov.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    lockScroll();
+  }
+
+  function closeMobileNav() {
+    var nav = $('mobileNav');
+    var ov  = $('mobileNavOverlay');
+    var btn = $('menuToggle');
+    if (!nav || !ov || !btn) return;
+    if (nav.hidden) return;
+    nav.hidden = true;
+    ov.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+    unlockScroll();
   }
 
   /* =======================================================
@@ -204,6 +272,14 @@
     return { sub: sub, tax: tax, del: del, total: sub + tax + del };
   }
 
+  function currentMethod() {
+    var radios = document.querySelectorAll('input[name="payMethod"]');
+    for (var i = 0; i < radios.length; i++) {
+      if (radios[i].checked) return radios[i].value;
+    }
+    return 'card';
+  }
+
   function codHandling() {
     if (currentMethod() !== 'cod') return 0;
     var t = cartTotals();
@@ -219,6 +295,7 @@
      ======================================================= */
   function renderFilters() {
     var box = $('filters');
+    if (!box) return;
     var html = '';
     for (var i = 0; i < CATEGORIES.length; i++) {
       var c = CATEGORIES[i];
@@ -235,6 +312,8 @@
      ======================================================= */
   function renderMenu() {
     var grid = $('menuGrid');
+    if (!grid) return;
+
     var list = activeCategory === 'All'
       ? MENU
       : MENU.filter(function (d) { return d.cat === activeCategory; });
@@ -284,7 +363,6 @@
     if (!grid) return;
 
     var html = '';
-
     for (var i = 0; i < GALLERY.length; i++) {
       var g = GALLERY[i];
       var hasImage = g.src && g.src.trim() !== '';
@@ -300,7 +378,6 @@
             (g.caption ? '<span class="gallery-caption">' + esc(g.caption) + '</span>' : '') +
           '</button>';
       } else {
-        // Empty placeholder tile — clearly labelled so you can see where photos go
         html += '' +
           '<div class="gallery-item' + featuredClass + '" aria-label="Empty photo slot">' +
             '<div class="gallery-empty">' +
@@ -311,7 +388,51 @@
           '</div>';
       }
     }
+    grid.innerHTML = html;
+  }
 
+  /* =======================================================
+     RENDER — GOOGLE REVIEWS
+     ======================================================= */
+  function starsHtml(rating) {
+    var html = '';
+    for (var i = 1; i <= 5; i++) {
+      html += '<span class="' + (i <= rating ? 's-on' : '') + '">★</span>';
+    }
+    return html;
+  }
+
+  function renderReviews() {
+    var grid = $('reviewsGrid');
+    if (!grid) return;
+
+    var html = '';
+    for (var i = 0; i < REVIEWS.length; i++) {
+      var r = REVIEWS[i];
+
+      html += '' +
+        '<article class="review-card">' +
+          '<div class="review-head">' +
+            '<span class="review-avatar" aria-hidden="true">' + esc(r.initials) + '</span>' +
+            '<span class="review-meta">' +
+              '<span class="review-name">' + esc(r.name) + '</span>' +
+              '<span class="review-date">' + esc(r.date) + '</span>' +
+            '</span>' +
+            (r.verified ? '<span class="review-badge">Verified</span>' : '') +
+          '</div>' +
+          '<div class="review-stars" aria-label="' + r.rating + ' out of 5 stars">' +
+            starsHtml(r.rating) +
+          '</div>' +
+          '<p class="review-text">&ldquo;' + esc(r.text) + '&rdquo;</p>' +
+          '<span class="review-source">' +
+            '<span class="reviews-google-badge" aria-hidden="true">' +
+              '<span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span>' +
+              '<span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>' +
+            '</span>' +
+            'Posted on Google' +
+          '</span>' +
+        '</article>';
+    }
     grid.innerHTML = html;
   }
 
@@ -339,6 +460,38 @@
         '</a>';
     }
     grid.innerHTML = html;
+  }
+
+  /* =======================================================
+     WI-FI — copy password
+     ======================================================= */
+  function handleCopyWifi() {
+    var passEl = $('wifiPass');
+    if (!passEl) return;
+    var text = passEl.textContent.trim();
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(function () { toast('Wi-Fi password copied'); })
+        .catch(function () { toast('Password: ' + text); });
+      return;
+    }
+
+    // Fallback for old browsers / insecure contexts
+    try {
+      var tmp = document.createElement('textarea');
+      tmp.value = text;
+      tmp.setAttribute('readonly', '');
+      tmp.style.position = 'absolute';
+      tmp.style.left = '-9999px';
+      document.body.appendChild(tmp);
+      tmp.select();
+      document.execCommand('copy');
+      document.body.removeChild(tmp);
+      toast('Wi-Fi password copied');
+    } catch (err) {
+      toast('Password: ' + text);
+    }
   }
 
   /* =======================================================
@@ -403,13 +556,23 @@
   function syncCart() {
     var t = cartTotals();
 
-    $('cartCount').textContent = cartCount();
-    $('cartSubtotal').textContent = money(t.sub);
-    $('cartTax').textContent = money(t.tax);
-    $('cartDelivery').textContent = t.del === 0 ? 'Free' : money(t.del);
-    $('cartTotal').textContent = money(t.total);
+    var cc = $('cartCount');
+    if (cc) cc.textContent = cartCount();
 
-    $('checkoutBtn').disabled = (cart.length === 0 || isPaying);
+    var cs = $('cartSubtotal');
+    if (cs) cs.textContent = money(t.sub);
+
+    var ct = $('cartTax');
+    if (ct) ct.textContent = money(t.tax);
+
+    var cd = $('cartDelivery');
+    if (cd) cd.textContent = t.del === 0 ? 'Free' : money(t.del);
+
+    var cT = $('cartTotal');
+    if (cT) cT.textContent = money(t.total);
+
+    var co = $('checkoutBtn');
+    if (co) co.disabled = (cart.length === 0 || isPaying);
 
     renderCartLines();
     syncCheckout();
@@ -417,6 +580,7 @@
 
   function renderCartLines() {
     var box = $('cartBody');
+    if (!box) return;
 
     if (!cart.length) {
       box.innerHTML =
@@ -455,15 +619,19 @@
      CART DRAWER
      ======================================================= */
   function openCart() {
-    $('cartOverlay').hidden = false;
-    $('cartDrawer').hidden = false;
+    var ov = $('cartOverlay');
+    var dr = $('cartDrawer');
+    if (!ov || !dr) return;
+    ov.hidden = false;
+    dr.hidden = false;
     lockScroll();
   }
 
   function closeCart() {
-    if ($('cartDrawer').hidden) return;
+    var dr = $('cartDrawer');
+    if (!dr || dr.hidden) return;
     $('cartOverlay').hidden = true;
-    $('cartDrawer').hidden = true;
+    dr.hidden = true;
     unlockScroll();
   }
 
@@ -475,13 +643,16 @@
     closeCart();
     syncCheckout();
     applyMethod();
-    $('checkoutModal').hidden = false;
+    var m = $('checkoutModal');
+    if (!m) return;
+    m.hidden = false;
     lockScroll();
   }
 
   function closeCheckout() {
-    if ($('checkoutModal').hidden) return;
-    $('checkoutModal').hidden = true;
+    var m = $('checkoutModal');
+    if (!m || m.hidden) return;
+    m.hidden = true;
     unlockScroll();
   }
 
@@ -509,10 +680,10 @@
       }
     }
 
-    $('sSubtotal').textContent = money(t.sub);
-    $('sTax').textContent = money(t.tax);
-    $('sDelivery').textContent = t.del === 0 ? 'Free' : money(t.del);
-    $('sTotal').textContent = money(grandTotal());
+    var sSub = $('sSubtotal'); if (sSub) sSub.textContent = money(t.sub);
+    var sTax = $('sTax');      if (sTax) sTax.textContent = money(t.tax);
+    var sDel = $('sDelivery'); if (sDel) sDel.textContent = t.del === 0 ? 'Free' : money(t.del);
+    var sTot = $('sTotal');    if (sTot) sTot.textContent = money(grandTotal());
 
     updatePayButton();
   }
@@ -520,20 +691,12 @@
   /* =======================================================
      PAYMENT METHOD
      ======================================================= */
-  function currentMethod() {
-    var radios = document.querySelectorAll('input[name="payMethod"]');
-    for (var i = 0; i < radios.length; i++) {
-      if (radios[i].checked) return radios[i].value;
-    }
-    return 'card';
-  }
-
   function applyMethod() {
     var m = currentMethod();
 
-    $('block-card').hidden = (m !== 'card');
-    $('block-upi').hidden  = (m !== 'upi');
-    $('block-cod').hidden  = (m !== 'cod');
+    var bc = $('block-card'); if (bc) bc.hidden = (m !== 'card');
+    var bu = $('block-upi');  if (bu) bu.hidden = (m !== 'upi');
+    var bd = $('block-cod');  if (bd) bd.hidden = (m !== 'cod');
 
     var labels = document.querySelectorAll('.pay-option');
     for (var i = 0; i < labels.length; i++) {
@@ -632,10 +795,15 @@
     clearErrors();
     var ok = true;
 
-    var name  = $('custName').value.trim();
-    var phone = $('custPhone').value.trim();
-    var email = $('custEmail').value.trim();
-    var addr  = $('custAddress').value.trim();
+    var nameEl  = $('custName');
+    var phoneEl = $('custPhone');
+    var emailEl = $('custEmail');
+    var addrEl  = $('custAddress');
+
+    var name  = nameEl  ? nameEl.value.trim()  : '';
+    var phone = phoneEl ? phoneEl.value.trim() : '';
+    var email = emailEl ? emailEl.value.trim() : '';
+    var addr  = addrEl  ? addrEl.value.trim()  : '';
 
     if (name.length < 2) { setErr('custName', 'Please enter your full name.'); ok = false; }
     if (!/^[0-9+\-\s()]{10,15}$/.test(phone)) {
@@ -647,10 +815,15 @@
     var method = currentMethod();
 
     if (method === 'card') {
-      var digits = $('cardNumber').value.replace(/\s/g, '');
-      var cname  = $('cardName').value.trim();
-      var exp    = $('cardExpiry').value.trim();
-      var cvv    = $('cardCvv').value.trim();
+      var cardNumEl = $('cardNumber');
+      var cardNameEl = $('cardName');
+      var cardExpEl = $('cardExpiry');
+      var cardCvvEl = $('cardCvv');
+
+      var digits = cardNumEl ? cardNumEl.value.replace(/\s/g, '') : '';
+      var cname  = cardNameEl ? cardNameEl.value.trim() : '';
+      var exp    = cardExpEl ? cardExpEl.value.trim() : '';
+      var cvv    = cardCvvEl ? cardCvvEl.value.trim() : '';
 
       if (digits.length < 13 || digits.length > 19) {
         setErr('cardNumber', 'Card number must be 13–19 digits.'); ok = false;
@@ -683,7 +856,8 @@
     }
 
     if (method === 'upi') {
-      var upi = $('upiId').value.trim();
+      var upiEl = $('upiId');
+      var upi = upiEl ? upiEl.value.trim() : '';
       if (!/^[a-zA-Z0-9._-]{2,}@[a-zA-Z]{2,}$/.test(upi)) {
         setErr('upiId', 'Enter a valid UPI ID (e.g. name@okbank).'); ok = false;
       }
@@ -744,25 +918,34 @@
 
     if (!validateCheckout()) {
       var errBox = $('payError');
-      errBox.textContent = 'Please correct the highlighted fields before paying.';
-      errBox.hidden = false;
+      if (errBox) {
+        errBox.textContent = 'Please correct the highlighted fields before paying.';
+        errBox.hidden = false;
+      }
+      var modal = $('checkoutModal');
+      if (modal) modal.scrollTop = 0;
       return;
     }
 
     var method = currentMethod();
     var grand  = grandTotal();
 
+    var cnEl = $('cardNumber');
+    var cnmEl = $('cardName');
+    var ceEl = $('cardExpiry');
+    var upiEl = $('upiId');
+
     var payload = {
       method: method,
-      cardNumber: $('cardNumber').value,
-      cardName: $('cardName').value.trim(),
-      cardExpiry: $('cardExpiry').value.trim(),
-      upiId: $('upiId').value.trim(),
+      cardNumber: cnEl ? cnEl.value : '',
+      cardName:   cnmEl ? cnmEl.value.trim() : '',
+      cardExpiry: ceEl ? ceEl.value.trim() : '',
+      upiId:      upiEl ? upiEl.value.trim() : '',
       amount: grand
     };
 
     isPaying = true;
-    $('payError').hidden = true;
+    var pe = $('payError'); if (pe) pe.hidden = true;
     updatePayButton();
 
     var snapshot = cart.map(function (l) {
@@ -770,8 +953,10 @@
       return { name: d.name, qty: l.qty, price: d.price };
     });
 
-    var customerName    = $('custName').value.trim();
-    var customerAddress = $('custAddress').value.trim();
+    var cnEl2 = $('custName');
+    var caEl = $('custAddress');
+    var customerName    = cnEl2 ? cnEl2.value.trim() : '';
+    var customerAddress = caEl  ? caEl.value.trim()  : '';
 
     processPayment(payload)
       .then(function (res) {
@@ -790,7 +975,8 @@
         });
 
         cart = [];
-        $('checkoutForm').reset();
+        var form = $('checkoutForm');
+        if (form) form.reset();
         applyMethod();
         syncCart();
       })
@@ -798,8 +984,10 @@
         isPaying = false;
         updatePayButton();
         var box = $('payError');
-        box.textContent = err.message || 'Payment could not be completed. Please try again.';
-        box.hidden = false;
+        if (box) {
+          box.textContent = err.message || 'Payment could not be completed. Please try again.';
+          box.hidden = false;
+        }
       });
   }
 
@@ -807,12 +995,12 @@
      CONFIRMATION
      ======================================================= */
   function showConfirmation(data) {
-    $('rOrderId').textContent = 'MS-' + rand(6);
-    $('rTxnId').textContent = data.txn;
-    $('rMethod').textContent = data.brand;
-    $('rAmount').textContent = money(data.amount);
-    $('rCustomer').textContent = data.name;
-    $('rAddress').textContent = data.address;
+    var rO = $('rOrderId'); if (rO) rO.textContent = 'MS-' + rand(6);
+    var rT = $('rTxnId');   if (rT) rT.textContent = data.txn;
+    var rM = $('rMethod');  if (rM) rM.textContent = data.brand;
+    var rA = $('rAmount');  if (rA) rA.textContent = money(data.amount);
+    var rC = $('rCustomer');if (rC) rC.textContent = data.name;
+    var rAd = $('rAddress');if (rAd) rAd.textContent = data.address;
 
     var now = new Date();
     var from = new Date(now.getTime() + 35 * 60000);
@@ -820,7 +1008,7 @@
     var fmt = function (d) {
       return d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
     };
-    $('rEta').textContent = fmt(from) + ' – ' + fmt(to);
+    var rE = $('rEta'); if (rE) rE.textContent = fmt(from) + ' – ' + fmt(to);
 
     var html = '';
     for (var i = 0; i < data.items.length; i++) {
@@ -828,61 +1016,27 @@
       html += '<div class="ci"><span>' + esc(it.name) + ' × ' + it.qty +
         '</span><b>' + money(it.price * it.qty) + '</b></div>';
     }
-    $('rItems').innerHTML = html;
+    var ri = $('rItems'); if (ri) ri.innerHTML = html;
 
-    $('confirmSub').textContent = data.method === 'cod'
-      ? 'Your order is confirmed. Please keep cash ready on delivery.'
-      : 'Payment received. Thank you for dining with Maison Saffron.';
+    var cs = $('confirmSub');
+    if (cs) {
+      cs.textContent = data.method === 'cod'
+        ? 'Your order is confirmed. Please keep cash ready on delivery.'
+        : 'Payment received. Thank you for dining with Maison Saffron.';
+    }
 
-    $('confirmModal').hidden = false;
-    lockScroll();
+    var cm = $('confirmModal');
+    if (cm) {
+      cm.hidden = false;
+      lockScroll();
+    }
   }
 
   function closeConfirm() {
-    if ($('confirmModal').hidden) return;
-    $('confirmModal').hidden = true;
+    var m = $('confirmModal');
+    if (!m || m.hidden) return;
+    m.hidden = true;
     unlockScroll();
-  }
-
-  /* =======================================================
-     FEEDBACK
-     ======================================================= */
-  function setRating(value) {
-    rating = value;
-    var stars = document.querySelectorAll('.star');
-    for (var i = 0; i < stars.length; i++) {
-      var v = parseInt(stars[i].getAttribute('data-value'), 10);
-      if (v <= value) stars[i].classList.add('is-on');
-      else stars[i].classList.remove('is-on');
-      stars[i].setAttribute('aria-checked', v === value ? 'true' : 'false');
-    }
-    setErr('rating', '');
-  }
-
-  function handleFeedbackSubmit(e) {
-    e.preventDefault();
-    clearErrors();
-
-    var ok = true;
-    var name    = $('fbName').value.trim();
-    var email   = $('fbEmail').value.trim();
-    var message = $('fbMessage').value.trim();
-    var status  = $('feedbackStatus');
-
-    if (name.length < 2)  { setErr('fbName', 'Please enter your name.'); ok = false; }
-    if (!isEmail(email))  { setErr('fbEmail', 'Enter a valid email address.'); ok = false; }
-    if (!rating)          { setErr('rating', 'Please select a rating.'); ok = false; }
-    if (message.length < 10) { setErr('fbMessage', 'Please write at least 10 characters.'); ok = false; }
-
-    if (!ok) { status.hidden = true; return; }
-
-    status.textContent = 'Thank you, ' + name + '! Your ' + rating + '-star feedback has been recorded.';
-    status.hidden = false;
-
-    $('feedbackForm').reset();
-    setRating(0);
-
-    toast('Feedback submitted — thank you!');
   }
 
   /* =======================================================
@@ -915,23 +1069,54 @@
      ======================================================= */
   function wireEvents() {
 
+    // Mobile nav toggle
+    var menuToggle = $('menuToggle');
+    if (menuToggle) menuToggle.addEventListener('click', openMobileNav);
+
+    var closeMobileNavBtn = $('closeMobileNav');
+    if (closeMobileNavBtn) closeMobileNavBtn.addEventListener('click', closeMobileNav);
+
+    var mobileNavOverlay = $('mobileNavOverlay');
+    if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+    var mobileNav = $('mobileNav');
+    if (mobileNav) {
+      mobileNav.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+        if (link) closeMobileNav();
+      });
+    }
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= MOBILE_NAV_BREAKPOINT) {
+        var mn = $('mobileNav');
+        if (mn && !mn.hidden) closeMobileNav();
+      }
+    });
+
     // Filters
-    $('filters').addEventListener('click', function (e) {
-      var btn = e.target.closest ? e.target.closest('.filter') : null;
-      if (!btn) return;
-      activeCategory = btn.getAttribute('data-cat');
-      renderFilters();
-      renderMenu();
-    });
+    var filters = $('filters');
+    if (filters) {
+      filters.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('.filter') : null;
+        if (!btn) return;
+        activeCategory = btn.getAttribute('data-cat');
+        renderFilters();
+        renderMenu();
+      });
+    }
 
-    // Menu add-to-cart (delegated)
-    $('menuGrid').addEventListener('click', function (e) {
-      var btn = e.target.closest ? e.target.closest('[data-add]') : null;
-      if (!btn) return;
-      addToCart(btn.getAttribute('data-add'));
-    });
+    // Menu add-to-cart
+    var menuGrid = $('menuGrid');
+    if (menuGrid) {
+      menuGrid.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('[data-add]') : null;
+        if (!btn) return;
+        addToCart(btn.getAttribute('data-add'));
+      });
+    }
 
-    // Gallery lightbox (delegated)
+    // Gallery lightbox
     var galleryGrid = $('galleryGrid');
     if (galleryGrid) {
       galleryGrid.addEventListener('click', function (e) {
@@ -947,49 +1132,54 @@
     var lb = $('lightbox');
     if (lb) {
       lb.addEventListener('click', function (e) {
-        // Close when clicking anywhere except the image or close button
         if (e.target === lb) closeLightbox();
       });
     }
 
     // Cart drawer line controls
-    $('cartBody').addEventListener('click', function (e) {
-      var t = e.target;
+    var cartBody = $('cartBody');
+    if (cartBody) {
+      cartBody.addEventListener('click', function (e) {
+        var t = e.target;
 
-      var inc = t.closest ? t.closest('[data-inc]') : null;
-      if (inc) {
-        var idI = inc.getAttribute('data-inc');
-        for (var i = 0; i < cart.length; i++) {
-          if (cart[i].id === idI) { setQty(idI, cart[i].qty + 1); return; }
+        var inc = t.closest ? t.closest('[data-inc]') : null;
+        if (inc) {
+          var idI = inc.getAttribute('data-inc');
+          for (var i = 0; i < cart.length; i++) {
+            if (cart[i].id === idI) { setQty(idI, cart[i].qty + 1); return; }
+          }
+          return;
         }
-        return;
-      }
 
-      var dec = t.closest ? t.closest('[data-dec]') : null;
-      if (dec) {
-        var idD = dec.getAttribute('data-dec');
-        for (var j = 0; j < cart.length; j++) {
-          if (cart[j].id === idD) { setQty(idD, cart[j].qty - 1); return; }
+        var dec = t.closest ? t.closest('[data-dec]') : null;
+        if (dec) {
+          var idD = dec.getAttribute('data-dec');
+          for (var j = 0; j < cart.length; j++) {
+            if (cart[j].id === idD) { setQty(idD, cart[j].qty - 1); return; }
+          }
+          return;
         }
-        return;
-      }
 
-      var rem = t.closest ? t.closest('[data-remove]') : null;
-      if (rem) {
-        setQty(rem.getAttribute('data-remove'), 0);
-      }
-    });
+        var rem = t.closest ? t.closest('[data-remove]') : null;
+        if (rem) {
+          setQty(rem.getAttribute('data-remove'), 0);
+        }
+      });
+    }
 
     // Open / close cart
-    $('cartBtn').addEventListener('click', openCart);
-    $('closeCart').addEventListener('click', closeCart);
-    $('cartOverlay').addEventListener('click', closeCart);
-    $('clearCartBtn').addEventListener('click', clearCart);
-    $('checkoutBtn').addEventListener('click', openCheckout);
+    var cartBtn = $('cartBtn');       if (cartBtn) cartBtn.addEventListener('click', openCart);
+    var closeCartBtn = $('closeCart'); if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
+    var co = $('cartOverlay');        if (co) co.addEventListener('click', closeCart);
+    var ccBtn = $('clearCartBtn');    if (ccBtn) ccBtn.addEventListener('click', clearCart);
+    var chk = $('checkoutBtn');       if (chk) chk.addEventListener('click', openCheckout);
 
     // Checkout modal
-    $('closeCheckout').addEventListener('click', closeCheckout);
-    $('checkoutForm').addEventListener('submit', handleCheckoutSubmit);
+    var closeCheckoutBtn = $('closeCheckout');
+    if (closeCheckoutBtn) closeCheckoutBtn.addEventListener('click', closeCheckout);
+
+    var checkoutForm = $('checkoutForm');
+    if (checkoutForm) checkoutForm.addEventListener('submit', handleCheckoutSubmit);
 
     // Payment method radios
     var radios = document.querySelectorAll('input[name="payMethod"]');
@@ -998,15 +1188,26 @@
     }
 
     // Card input formatting
-    $('cardNumber').addEventListener('input', function () {
-      this.value = formatCardNumber(this.value);
-    });
-    $('cardExpiry').addEventListener('input', function () {
-      this.value = formatExpiry(this.value);
-    });
-    $('cardCvv').addEventListener('input', function () {
-      this.value = this.value.replace(/\D/g, '').slice(0, 4);
-    });
+    var cardNum = $('cardNumber');
+    if (cardNum) {
+      cardNum.addEventListener('input', function () {
+        this.value = formatCardNumber(this.value);
+      });
+    }
+
+    var cardExp = $('cardExpiry');
+    if (cardExp) {
+      cardExp.addEventListener('input', function () {
+        this.value = formatExpiry(this.value);
+      });
+    }
+
+    var cardCvv = $('cardCvv');
+    if (cardCvv) {
+      cardCvv.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '').slice(0, 4);
+      });
+    }
 
     // Live error clearing on checkout inputs
     var checkoutIds = [
@@ -1026,18 +1227,12 @@
     }
 
     // Confirmation
-    $('newOrderBtn').addEventListener('click', closeConfirm);
+    var newOrderBtn = $('newOrderBtn');
+    if (newOrderBtn) newOrderBtn.addEventListener('click', closeConfirm);
 
-    // Feedback stars
-    var stars = document.querySelectorAll('.star');
-    for (var s = 0; s < stars.length; s++) {
-      stars[s].addEventListener('click', function () {
-        setRating(parseInt(this.getAttribute('data-value'), 10));
-      });
-    }
-
-    // Feedback form
-    $('feedbackForm').addEventListener('submit', handleFeedbackSubmit);
+    // Wi-Fi copy
+    var copyWifiBtn = $('copyWifiBtn');
+    if (copyWifiBtn) copyWifiBtn.addEventListener('click', handleCopyWifi);
 
     // Share button
     var shareBtn = $('shareBtn');
@@ -1046,10 +1241,21 @@
     // Escape closes overlays in the right order
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
-      if (!$('lightbox').hidden) { closeLightbox(); return; }
-      if (!$('confirmModal').hidden) { closeConfirm(); return; }
-      if (!$('checkoutModal').hidden) { closeCheckout(); return; }
-      if (!$('cartDrawer').hidden) { closeCart(); }
+
+      var lbx = $('lightbox');
+      if (lbx && !lbx.hidden) { closeLightbox(); return; }
+
+      var cm = $('confirmModal');
+      if (cm && !cm.hidden) { closeConfirm(); return; }
+
+      var chm = $('checkoutModal');
+      if (chm && !chm.hidden) { closeCheckout(); return; }
+
+      var mn = $('mobileNav');
+      if (mn && !mn.hidden) { closeMobileNav(); return; }
+
+      var cd = $('cartDrawer');
+      if (cd && !cd.hidden) { closeCart(); }
     });
   }
 
@@ -1063,6 +1269,7 @@
     renderFilters();
     renderMenu();
     renderGallery();
+    renderReviews();
     renderSocial();
     wireEvents();
 

@@ -48,14 +48,14 @@
      GALLERY DATA
      ======================================================= */
   var GALLERY = [
-    { src: '', caption: 'The Dining Hall', hint: 'Featured',  featured: true },
-    { src: '', caption: 'Signature Dal',   hint: '1200×1200' },
-    { src: '', caption: 'Tandoor Kitchen', hint: '1200×1200' },
-    { src: '', caption: 'Private Dining',  hint: '1200×1200' },
-    { src: '', caption: 'Dessert Counter', hint: '1200×1200' },
-    { src: '', caption: 'The Terrace',     hint: '1200×1200' },
-    { src: '', caption: 'Spice Room',      hint: '1200×1200' },
-    { src: '', caption: 'Evening Service', hint: '1200×1200' }
+    { src: '01.webp', caption: 'The Dining Hall', hint: 'Featured',  featured: true },
+    { src: '04.webp', caption: 'Balcony',   hint: '1200×1200' },
+    { src: '05.webp', caption: 'Front ', hint: '1200×1200' },
+    { src: '02.webp', caption: 'Private Dining',  hint: '1200×1200' },
+    { src: '03.webp', caption: 'Dessert Counter', hint: '1200×1200' },
+    { src: '06.webp', caption: 'The Dining Hall',     hint: '1200×1200' },
+    { src: '07.webp', caption: 'A dining hall Snapshot',      hint: '1200×1200' },
+    { src: '08.webp', caption: 'Front View', hint: '1200×1200' }
   ];
 
   /* =======================================================

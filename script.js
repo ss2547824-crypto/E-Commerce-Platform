@@ -18,11 +18,11 @@
     { id: 'st5', cat: 'COFFEE', name: 'Cafe Mocha', desc: 'Espresso blended with richchocolate and steamed milk', price: 189, veg: true },
     { id: 'st6', cat: 'COFFEE', name: 'Cafe Frappe', desc: 'Refreshing blended cold coffee.', price: 199, veg: true },
   
-    { id: 'mn1', cat: 'Mains', name: 'Dal Maison Saffron', desc: 'Black lentils, slow-simmered 18 hours, tomato, cream, smoked butter.', price: 520, veg: true,  tag: 'Signature' },
-    { id: 'mn2', cat: 'Mains', name: 'Butter Chicken', desc: 'Tandoor chicken, tomato-fenugreek gravy, white butter, honey.', price: 640, veg: false, tag: "Chef's Pick" },
-    { id: 'mn3', cat: 'Mains', name: 'Malabar Fish Curry', desc: 'Sea bass, coconut milk, raw mango, curry leaf, red rice.', price: 720, veg: false },
-    { id: 'mn4', cat: 'Mains', name: 'Paneer Pasanda', desc: 'Stuffed paneer, cashew-almond gravy, rose water, silver leaf.', price: 560, veg: true },
-    { id: 'mn5', cat: 'Mains', name: 'Lamb Rogan Josh', desc: 'Kashmiri chilli, fennel, yoghurt, slow-braised shoulder.', price: 780, veg: false },
+    { id: 'mn1', cat: 'CHILLED DRINKS', name: 'Ice Chocolate', desc: 'Rich, chilled chocolate drink.', price: 199,  veg: true, tag: "*Classic",tag:"*Oreo      +₹30",tag:"*KitKat      +₹30",tag:"*Nutella      +₹30" }, 
+    { id: 'mn2', cat: 'CHILLED DRINKS', name: 'Blue Lagoon Mocktail', desc: 'A refreshing blend of Citus flavours with Sparkling soda.', price: 159, veg: true, tag: "Signature" },
+    { id: 'mn3', cat: 'CHILLED DRINKS', name: 'Virgin Mojito', desc: 'A refreshing blend of mint, lime and sparkling soda.', price: 159, veg: true, tag: "Signature" },
+    { id: 'mn4', cat: 'CHILLED DRINKS', name: 'TMT Signature Shake ', desc: 'Our signature creamy mango shake, served chilled.', price: 179, veg: true },
+    { id: 'mn5', cat: 'CHILLED DRINKS', name: 'Strawberry Shake', desc: 'Creamy strawberry shake, served chilled.', price: 179, veg: true },
 
     { id: 'br1', cat: 'Biryani', name: 'Hyderabadi Chicken Biryani', desc: 'Dum-cooked long grain rice, saffron, fried onion, mirchi ka salan.', price: 690, veg: false, tag: 'Signature' },
     { id: 'br2', cat: 'Biryani', name: 'Vegetable Dum Biryani', desc: 'Seasonal vegetables, kewra, rose, mint, burani raita.', price: 590, veg: true },

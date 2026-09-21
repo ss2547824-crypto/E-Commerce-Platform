@@ -18,7 +18,15 @@
     { id: 'st5', cat: 'COFFEE', name: 'Cafe Mocha', desc: 'Espresso blended with richchocolate and steamed milk', price: 189, veg: true },
     { id: 'st6', cat: 'COFFEE', name: 'Cafe Frappe', desc: 'Refreshing blended cold coffee.', price: 199, veg: true },
   
-    { id: 'mn1', cat: 'CHILLED DRINKS', name: 'Ice Chocolate', desc: 'Rich, chilled chocolate drink.', price: 199,  veg: true, tag: "*Classic",tag:"*Oreo      +₹30",tag:"*KitKat      +₹30 ",tag:"*Nutella      +₹30" }, 
+    { 
+  id: 'mn1', 
+  cat: 'CHILLED DRINKS', 
+  name: 'Ice Chocolate', 
+  desc: 'Rich, chilled chocolate drink.', 
+  price: 199, 
+  veg: true, 
+  tags: ["*Classic", "*Oreo +₹30", "*KitKat +₹30", "*Nutella +₹30"] 
+},
     { id: 'mn2', cat: 'CHILLED DRINKS', name: 'Blue Lagoon Mocktail', desc: 'A refreshing blend of Citus flavours with Sparkling soda.', price: 159, veg: true, tag: "Signature" },
     { id: 'mn3', cat: 'CHILLED DRINKS', name: 'Virgin Mojito', desc: 'A refreshing blend of mint, lime and sparkling soda.', price: 159, veg: true, tag: "Signature" },
     { id: 'mn4', cat: 'CHILLED DRINKS', name: 'TMT Signature Shake ', desc: 'Our signature creamy mango shake, served chilled.', price: 179, veg: true },
@@ -40,13 +48,19 @@
  { id: 'bd4', cat: 'QUICK BITES', name: 'Chilly Cheese Toast ', desc: 'Golden toasted bread topped with melted cheese and chillies.', price: 199, veg: true },
 
 
-    { id: 'ds1', cat: 'Desserts', name: 'Saffron Kulfi', desc: 'Slow-reduced milk, Iranian saffron, pistachio, rose syrup.', price: 320, veg: true, tag: "Chef's Pick" },
-    { id: 'ds2', cat: 'Desserts', name: 'Gulab Jamun Cheesecake', desc: 'Baked cheesecake, cardamom, rose, warm jamun.', price: 380, veg: true },
-    { id: 'ds3', cat: 'Desserts', name: 'Dark Chocolate Halwa', desc: '70% single-origin chocolate, atta halwa, sea salt, gold leaf.', price: 360, veg: true },
+    { id: 'ds1', cat: 'wORK KITCHEN', name: 'Spicy Paneer Wrap', desc: 'Soft Tortilla filled with spicy paneer , fresh vegetable and house souces.', price: 199, veg: true, tag: "" },
+    { id: 'ds2', cat: 'WORK KITCHEN', name: 'Chaat Street Wrap', desc: 'A delicious street-style wrap with fresh vegetables tangy flavour.', price: 189, veg: true },
+    { id: 'ds3', cat: 'WORK KITCHEN', name: 'Veg Noodles', desc: 'Classic Hakka noodles with fresh vegetables.', price: 249, veg: true },
 
-    { id: 'bv1', cat: 'Beverages', name: 'Masala Chai Flight', desc: 'Three brews — cardamom, ginger, saffron.', price: 260, veg: true },
+
+
+
+     { id: 'bv1', cat: 'Beverages', name: 'Masala Chai Flight', desc: 'Three brews — cardamom, ginger, saffron.', price: 260, veg: true },
     { id: 'bv2', cat: 'Beverages', name: 'Rose Lassi', desc: 'House yoghurt, rose petal, pistachio, honey.', price: 240, veg: true },
     { id: 'bv3', cat: 'Beverages', name: 'Kokum Cooler', desc: 'Coastal kokum, black salt, mint, soda.', price: 220, veg: true }
+
+    
+
   ];
 
   var CATEGORIES = ['All'].concat(
@@ -299,63 +313,133 @@
   function grandTotal() {
     return cartTotals().total + codHandling();
   }
+/* =======================================================
+   RENDER — FILTERS
+   ======================================================= */
 
-  /* =======================================================
-     RENDER — FILTERS
-     ======================================================= */
-  function renderFilters() {
-    var box = $('filters');
-    if (!box) return;
-    var html = '';
-    for (var i = 0; i < CATEGORIES.length; i++) {
-      var c = CATEGORIES[i];
-      html += '<button type="button" class="filter' +
-        (c === activeCategory ? ' is-active' : '') +
-        '" data-cat="' + esc(c) + '" role="tab" aria-selected="' +
-        (c === activeCategory) + '">' + esc(c) + '</button>';
-    }
-    box.innerHTML = html;
+function renderFilters() {
+  var box = $('filters');
+
+  if (!box) return;
+
+  var html = '';
+
+  for (var i = 0; i < CATEGORIES.length; i++) {
+    var category = CATEGORIES[i];
+
+    html +=
+      '<button type="button" class="filter' +
+      (category === activeCategory ? ' is-active' : '') +
+      '" data-cat="' + esc(category) + '"' +
+      ' role="tab" aria-selected="' +
+      (category === activeCategory ? 'true' : 'false') +
+      '">' +
+      esc(category) +
+      '</button>';
   }
 
-  /* =======================================================
-     RENDER — MENU
-     ======================================================= */
-  function renderMenu() {
-    var grid = $('menuGrid');
-    if (!grid) return;
+  box.innerHTML = html;
+}
 
-    var list = activeCategory === 'All'
-      ? MENU
-      : MENU.filter(function (d) { return d.cat === activeCategory; });
 
-    if (!list.length) {
-      grid.innerHTML = '<p class="muted">No dishes in this category yet.</p>';
-      return;
-    }
+/* =======================================================
+   RENDER — MENU (FIXED)
+   ======================================================= */
 
-    var html = '';
-    for (var i = 0; i < list.length; i++) {
-      var d = list[i];
-      var vegChip = d.veg
-        ? '<span class="chip chip-veg">Veg</span>'
-        : '<span class="chip chip-nonveg">Non-Veg</span>';
-      var tagChip = d.tag ? '<span class="chip chip-gold">' + esc(d.tag) + '</span>' : '';
+function renderMenu() {
+  var grid = $('menuGrid');
 
-      html += '' +
-        '<article class="dish">' +
-          '<div class="dish-top">' +
-            '<h3>' + esc(d.name) + '</h3>' +
-            '<span class="dish-price">' + money(d.price) + '</span>' +
-          '</div>' +
-          '<p class="dish-desc">' + esc(d.desc) + '</p>' +
-          '<div class="dish-meta">' + vegChip + tagChip +
-            '<span class="chip">' + esc(d.cat) + '</span>' +
-          '</div>' +
-          '<button type="button" class="dish-add" data-add="' + d.id + '">Add to Cart</button>' +
-        '</article>';
-    }
-    grid.innerHTML = html;
+  if (!grid) return;
+
+  var list;
+
+  /*
+   * Show every dish when All is selected.
+   * Otherwise, show dishes from the selected category.
+   */
+
+  if (
+    !activeCategory ||
+    activeCategory.toLowerCase() === 'all'
+  ) {
+    list = MENU.slice();
+  } else {
+    list = MENU.filter(function (dish) {
+      return String(dish.cat).toLowerCase() ===
+             String(activeCategory).toLowerCase();
+    });
   }
+
+  if (list.length === 0) {
+    grid.innerHTML =
+      '<p class="muted">No dishes in this category yet.</p>';
+
+    return;
+  }
+
+  var html = '';
+
+  for (var i = 0; i < list.length; i++) {
+    var dish = list[i];
+
+    var vegChip = dish.veg
+      ? '<span class="chip chip-veg">Veg</span>'
+      : '<span class="chip chip-nonveg">Non-Veg</span>';
+
+    var tagChip = '';
+
+    /*
+     * Supports both tag and tags.
+     */
+
+    if (dish.tag) {
+      tagChip =
+        '<span class="chip chip-gold">' +
+        esc(dish.tag) +
+        '</span>';
+    }
+
+    if (Array.isArray(dish.tags)) {
+      for (var j = 0; j < dish.tags.length; j++) {
+        tagChip +=
+          '<span class="chip chip-gold">' +
+          esc(dish.tags[j]) +
+          '</span>';
+      }
+    }
+
+    html +=
+      '<article class="dish">' +
+
+        '<div class="dish-top">' +
+          '<h3>' + esc(dish.name) + '</h3>' +
+          '<span class="dish-price">' +
+            money(dish.price) +
+          '</span>' +
+        '</div>' +
+
+        '<p class="dish-desc">' +
+          esc(dish.desc || '') +
+        '</p>' +
+
+        '<div class="dish-meta">' +
+          vegChip +
+          tagChip +
+          '<span class="chip">' +
+            esc(dish.cat) +
+          '</span>' +
+        '</div>' +
+
+        '<button type="button" class="dish-add"' +
+          ' data-add="' + esc(dish.id) + '">' +
+          'Add to Cart' +
+        '</button>' +
+
+      '</article>';
+  }
+
+  grid.innerHTML = html;
+}
 
   /* =======================================================
      RENDER — GALLERY

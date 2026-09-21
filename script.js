@@ -11,11 +11,13 @@
      MENU DATA
      ======================================================= */
   var MENU = [
-    { id: 'st1', cat: 'Starters', name: 'Saffron Paneer Tikka', desc: 'Clay-oven paneer, saffron yoghurt marinade, burnt onion, mint chutney.', price: 420, veg: true,  tag: "Chef's Pick" },
-    { id: 'st2', cat: 'Starters', name: 'Prawn Koliwada', desc: 'Crisp semolina prawns, kokum aioli, curry leaf salt.', price: 620, veg: false },
-    { id: 'st3', cat: 'Starters', name: 'Dahi Ke Kebab', desc: 'Hung curd, roasted cumin, green chilli, cashew crust.', price: 390, veg: true },
-    { id: 'st4', cat: 'Starters', name: 'Lamb Seekh', desc: 'Hand-minced lamb, black cardamom, smoked ghee, pickled onion.', price: 680, veg: false },
-
+    { id: 'st1', cat: 'COFFEE', name: 'Espresso', desc: 'Strong and bold single-short espresso', price: 99, veg: true },
+    { id: 'st2', cat: 'COFFEE', name: 'Americano', desc: 'Dubble-shot espresso finished with hot water', price: 119, veg: true }, 
+    { id: 'st3', cat: 'COFFEE', name: 'Cappuccino', desc: 'Espresso topped with steamed milk and velvety foam', price: 169, veg: true },
+    { id: 'st4', cat: 'COFFEE', name: 'Cafe Latte', desc: 'Smooth espresso blended with steamed milk', price: 169, veg: true },
+    { id: 'st5', cat: 'COFFEE', name: 'Cafe Mocha', desc: 'Espresso blended with richchocolate and steamed milk', price: 189, veg: true },
+    { id: 'st6', cat: 'COFFEE', name: 'Cafe Frappe', desc: 'Refreshing blended cold coffee.', price: 199, veg: true },
+  
     { id: 'mn1', cat: 'Mains', name: 'Dal Maison Saffron', desc: 'Black lentils, slow-simmered 18 hours, tomato, cream, smoked butter.', price: 520, veg: true,  tag: 'Signature' },
     { id: 'mn2', cat: 'Mains', name: 'Butter Chicken', desc: 'Tandoor chicken, tomato-fenugreek gravy, white butter, honey.', price: 640, veg: false, tag: "Chef's Pick" },
     { id: 'mn3', cat: 'Mains', name: 'Malabar Fish Curry', desc: 'Sea bass, coconut milk, raw mango, curry leaf, red rice.', price: 720, veg: false },

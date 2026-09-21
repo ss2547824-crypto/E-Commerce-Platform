@@ -18,19 +18,27 @@
     { id: 'st5', cat: 'COFFEE', name: 'Cafe Mocha', desc: 'Espresso blended with richchocolate and steamed milk', price: 189, veg: true },
     { id: 'st6', cat: 'COFFEE', name: 'Cafe Frappe', desc: 'Refreshing blended cold coffee.', price: 199, veg: true },
   
-    { id: 'mn1', cat: 'CHILLED DRINKS', name: 'Ice Chocolate', desc: 'Rich, chilled chocolate drink.', price: 199,  veg: true, tag: "*Classic",tag:"*Oreo      +₹30",tag:"*KitKat      +₹30",tag:"*Nutella      +₹30" }, 
+    { id: 'mn1', cat: 'CHILLED DRINKS', name: 'Ice Chocolate', desc: 'Rich, chilled chocolate drink.', price: 199,  veg: true, tag: "*Classic",tag:"*Oreo      +₹30",tag:"*KitKat      +₹30 ",tag:"*Nutella      +₹30" }, 
     { id: 'mn2', cat: 'CHILLED DRINKS', name: 'Blue Lagoon Mocktail', desc: 'A refreshing blend of Citus flavours with Sparkling soda.', price: 159, veg: true, tag: "Signature" },
     { id: 'mn3', cat: 'CHILLED DRINKS', name: 'Virgin Mojito', desc: 'A refreshing blend of mint, lime and sparkling soda.', price: 159, veg: true, tag: "Signature" },
     { id: 'mn4', cat: 'CHILLED DRINKS', name: 'TMT Signature Shake ', desc: 'Our signature creamy mango shake, served chilled.', price: 179, veg: true },
     { id: 'mn5', cat: 'CHILLED DRINKS', name: 'Strawberry Shake', desc: 'Creamy strawberry shake, served chilled.', price: 179, veg: true },
 
-    { id: 'br1', cat: 'Biryani', name: 'Hyderabadi Chicken Biryani', desc: 'Dum-cooked long grain rice, saffron, fried onion, mirchi ka salan.', price: 690, veg: false, tag: 'Signature' },
-    { id: 'br2', cat: 'Biryani', name: 'Vegetable Dum Biryani', desc: 'Seasonal vegetables, kewra, rose, mint, burani raita.', price: 590, veg: true },
-    { id: 'br3', cat: 'Biryani', name: 'Prawn Biryani', desc: 'Tiger prawns, coastal masala, coconut, curry leaf.', price: 820, veg: false },
+    { id: 'br1', cat: 'REFRESHMENTS', name: 'Fresh Lime Soda', desc: 'Available in :Sweet *Salted *Mixed.', price: 119, veg: true, tag: 'Signature' },
+    { id: 'br2', cat: 'REFRESHMENTS', name: 'Coke ', desc: '.', price: 49, veg: true },
+    { id: 'br3', cat: 'REFRESHMENTS', name: 'Diet Coke', desc: '.', price: 49, veg: true },
+{ id: 'br4', cat: 'REFRESHMENTS', name: 'Sprite', desc: '.', price: 49, veg: true },
+{ id: 'br5', cat: 'REFRESHMENTS', name: 'Red Bull', desc: '.', price: 149, veg: true },
+{ id: 'br6', cat: 'REFRESHMENTS', name: 'Diet Red Bull', desc: '.', price: 149, veg: true },
+{ id: 'br7', cat: 'REFRESHMENTS', name: 'Water Bottle', desc: '.', price: 19, veg: true },
 
-    { id: 'bd1', cat: 'Breads', name: 'Truffle Garlic Naan', desc: 'Black truffle butter, roasted garlic, coriander.', price: 180, veg: true },
-    { id: 'bd2', cat: 'Breads', name: 'Laccha Paratha', desc: 'Layered whole wheat, ghee, flaked sea salt.', price: 140, veg: true },
-    { id: 'bd3', cat: 'Breads', name: 'Kashmiri Naan', desc: 'Sweet naan, cherries, almond, coconut.', price: 190, veg: true },
+
+
+    { id: 'bd1', cat: 'QUICK BITES', name: 'Street Fries', desc: 'Golden, crispy fries seasoned to perfection.', price: 179, veg: true },
+    { id: 'bd2', cat: 'QUICK BITES', name: 'Corn Crunch', desc: 'Crispy sweet corn delicately tossed in a mild chill garlic seasoning.', price: 229, veg: true },
+    { id: 'bd3', cat: 'QUICK BITES', name: 'Corn Salt & Pepper', desc: 'Crispy sweet corn tossed with freshly cracked black pepper and seasoning.', price: 199, veg: true },
+ { id: 'bd4', cat: 'QUICK BITES', name: 'Chilly Cheese Toast ', desc: 'Golden toasted bread topped with melted cheese and chillies.', price: 199, veg: true },
+
 
     { id: 'ds1', cat: 'Desserts', name: 'Saffron Kulfi', desc: 'Slow-reduced milk, Iranian saffron, pistachio, rose syrup.', price: 320, veg: true, tag: "Chef's Pick" },
     { id: 'ds2', cat: 'Desserts', name: 'Gulab Jamun Cheesecake', desc: 'Baked cheesecake, cardamom, rose, warm jamun.', price: 380, veg: true },

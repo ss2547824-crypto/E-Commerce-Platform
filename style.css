@@ -266,7 +266,7 @@ p { margin: 0 0 1rem; }
 .mobile-nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(8, 8, 7, 0.72);
+  background: rgba(255, 255, 255, 0.72);
   z-index: 95;
 }
 
@@ -534,7 +534,7 @@ p { margin: 0 0 1rem; }
 }
 
 .dish {
-  background: #fff;
+  background: #e2e1e1;
   border: 1px solid var(--cream-3);
   border-radius: var(--radius-lg);
   padding: 22px 20px 18px;
@@ -596,7 +596,7 @@ p { margin: 0 0 1rem; }
   border: 1px solid var(--ink);
   border-radius: var(--radius);
   font-size: .72rem;
-  letter-spacing: .14em;
+  letter-spacing: .114em;
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;

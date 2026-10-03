@@ -170,11 +170,11 @@
   };
 
   var SOCIAL = [
-    { key: 'instagram', name: 'Instagram',   handle: '@maisonsaffron', count: '48.2K', url: 'https://instagram.com/maisonsaffron' },
-    { key: 'facebook',  name: 'Facebook',    handle: '/maisonsaffron', count: '32.7K', url: 'https://facebook.com/maisonsaffron' },
-    { key: 'x',         name: 'X (Twitter)', handle: '@maisonsaffron', count: '12.4K', url: 'https://x.com/maisonsaffron' },
-    { key: 'youtube',   name: 'YouTube',     handle: '/maisonsaffron', count: '8.9K',  url: 'https://youtube.com/@maisonsaffron' },
-    { key: 'whatsapp',  name: 'WhatsApp',    handle: 'Chat with us',   count: '24/7',  url: 'https://wa.me/914445678900' }
+    { key: 'instagram', name: 'Instagram',   handle: '@mangotreechapra', count: '00.0K', url: 'https://www.instagram.com/mangotreechapra?stkn=MW83dHMyZ2NqMDE1aQ==' },
+    { key: 'facebook',  name: 'Facebook',    handle: '/mangotreechapra', count: '00.0k', url: 'https://www.facebook.com/share/1CFohJNTU9/' },
+    { key: 'x',         name: 'X (Twitter)', handle: '@mangotreechapra', count: '00.0K', url: 'https://img.magnific.com/premium-vector/no-data-found-empty-file-folder-concept-design-vector-illustration_620585-1698.jpg?semt=ais_hybrid&w=740&q=80' },
+    { key: 'youtube',   name: 'YouTube',     handle: '/mangotreechapra', count: '00.0k',  url: 'https://img.magnific.com/premium-vector/no-data-found-empty-file-folder-concept-design-vector-illustration_620585-1698.jpg?semt=ais_hybrid&w=740&q=80' },
+    { key: 'whatsapp',  name: 'WhatsApp',    handle: 'Chat with us',   count: '24/7',  url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXwcvhGWKVcxFNPHVfj2JRtMA8T9Sl1fydGGVCw9_V5A&s=10' }
   ];
 
   /* =======================================================
